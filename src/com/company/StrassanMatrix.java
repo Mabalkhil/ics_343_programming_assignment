@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 		public static int a[][] ;
 		public static int b[][] ;
-		
+		public static int value ;
 	  
 		 public static void main (String[] args) throws IOException
 		    {
@@ -33,7 +33,7 @@ import java.util.Scanner;
 			        
 			        System.out.println("Enter base case number power of two :");
 			        // reading the input dimension from the user
-			        int value = keyboardScanner.nextInt();
+			        value = keyboardScanner.nextInt();
 			        
 			        // getting the file from the user
 			        Scanner fileScanner = new Scanner(new File(inputFileName));
@@ -49,7 +49,7 @@ import java.util.Scanner;
 				  
 				    StrassanMatrix s = new StrassanMatrix();
 		 
-				    int[][] result = s.multiply(a, b,value);
+				    int[][] result = s.multiply(a, b);
 				    // writing to the file 
 
 				    int count = 0;
@@ -81,7 +81,7 @@ import java.util.Scanner;
 		}
 		 
 		
-	    public int[][] multiply(int[][] A, int[][] B,int value)
+	    public int[][] multiply(int[][] A, int[][] B)
 	    {        
 	        int n = A.length;
 	        int[][] R = new int[n][n];
@@ -117,13 +117,13 @@ import java.util.Scanner;
 	            split(B, B22, n/2, n/2);
 	  
 	 
-	            int [][] M1 = multiply(add(A11, A22), add(B11, B22),value);
-	            int [][] M2 = multiply(add(A21, A22), B11,value);
-	            int [][] M3 = multiply(A11, sub(B12, B22),value);
-	            int [][] M4 = multiply(A22, sub(B21, B11),value);
-	            int [][] M5 = multiply(add(A11, A12), B22,value);
-	            int [][] M6 = multiply(sub(A21, A11), add(B11, B12),value);
-	            int [][] M7 = multiply(sub(A12, A22), add(B21, B22),value);
+	            int [][] M1 = multiply(add(A11, A22), add(B11, B22));
+	            int [][] M2 = multiply(add(A21, A22), B11);
+	            int [][] M3 = multiply(A11, sub(B12, B22));
+	            int [][] M4 = multiply(A22, sub(B21, B11));
+	            int [][] M5 = multiply(add(A11, A12), B22);
+	            int [][] M6 = multiply(sub(A21, A11), add(B11, B12));
+	            int [][] M7 = multiply(sub(A12, A22), add(B21, B22));
 	 
 	     
 	            int [][] C11 = add(sub(add(M1, M4), M5), M7);
